@@ -1,0 +1,17 @@
+
+  html {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .custom-file-input::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+    .custom-file-input::before {
+      content: 'Select audio';
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .custom-file-input:active::before {
+      background: -webkit-linear-gradient(top, #040238, #51b4db);
+    }
