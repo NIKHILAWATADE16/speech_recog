@@ -11,6 +11,7 @@ from pydub import AudioSegment
 from pydub.silence import split_on_silence
 from os import path
 import subprocess
+import pandas
 
 
 r = sr.Recognizer()
