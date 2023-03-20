@@ -1,0 +1,2 @@
+[console_scripts]
+ffdl = ffmpeg_downloader.__main__:main

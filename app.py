@@ -12,6 +12,7 @@ from pydub.silence import split_on_silence
 from os import path
 import subprocess
 import pandas
+import requests
 
 
 r = sr.Recognizer()
