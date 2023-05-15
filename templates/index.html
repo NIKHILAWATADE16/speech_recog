@@ -7,38 +7,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <img src="/static/mic.png" alt=""> -->
   <title>Speech recognition</title>
- 
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="icon"  href="{{url_for('static',filename='mic.png')}}">
 
-  <link  rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="{{url_for('static',filename='mic.png')}}">
+
+  <link rel="stylesheet" href="style.css">
   <script src="scripts.js"></script>
 </head>
 
 <body class="text-gray-400 bg-gray-900 body-font">
   <header class="text-gray-400 bg-gray-900 body-font">
     <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-        <svg   class="w-10 h-10 text-white p-2  rounded-full"
-          viewBox="0 0 24 24">
+      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0" style="margin: auto;">
+        <svg class="w-10 h-10 text-white p-2  rounded-full" viewBox="0 0 24 24">
           <img src="/static/mic.png" alt="">
           <!-- <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path> -->
         </svg>
         <span class="ml-3 text-xl">Speech Recognition</span>
       </a>
-      <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-        <a class="mr-5 hover:text-white">First Link</a>
-        <a class="mr-5 hover:text-white">Second Link</a>
-        <a class="mr-5 hover:text-white">Third Link</a>
-        <a class="mr-5 hover:text-white">Fourth Link</a>
-      </nav>
-      <button
-        class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">Button
-        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-          <path d="M5 12h14M12 5l7 7-7 7"></path>
-        </svg>
-      </button>
+      
     </div>
     <section class="text-gray-400 bg-gray-900 body-font relative">
       <div class="container px-5 py-20 mx-auto">
@@ -46,6 +33,7 @@
           <div class="flex flex-wrap -m-2">
             <div class="p-2 w-full">
               <div class="relative">
+                <u><b><h1 style="margin: auto; margin-left: 300px;">Microphone audio to Text</h1></b></u><br>
                 <label for="message" class="leading-7 text-sm text-gray-400">Your Text is Displayed here</label>
                 <textarea id="message" name="message"
                   class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
@@ -66,6 +54,8 @@
             <div class="p-2 w-full pt-0  border-t border-gray-800 text-center"></div>
             <div class="p-2 w-full">
               <div class="relative">
+                <u><b><h1 style="margin: auto; margin-left: 300px;">Audio file to Text</h1></b></u><br>
+
                 <label for="message" class="leading-7 text-sm text-red-400"><b><i><u> Please Upload .wav extension file
                         only</u></i></b></label>
                 <textarea id="message" name="message"
@@ -84,25 +74,52 @@
               {{form.hidden_tag()}}
               {{form.file()}}
               {{form.submit()}}
+              
+            </form>
+            <br>
+            <br>
+            <div class="p-10 w-full  border-t border-gray-800 text-center"></div>
+            <div class="p-2 w-full">
+              <div class="relative">
+                <u><b><h1 style="margin: auto; margin-left: 300px;">Video file to Text</h1></b></u><br>
+
+                <label for="message" class="leading-7 text-sm text-red-400"><b><i><u> Please Upload .mp4 extension file
+                        only</u></i></b></label>
+                <textarea id="message" name="message"
+                  class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">{{result}}</textarea>
+              </div>
+              <!-- <audio controls  >
+                <source src="static/test.wav" >
+              </audio> -->
+            </div>
+            <!-- <button
+              class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded"><input
+                type="file" class="custom-file-input" id="file_input"></button> -->
+
+            <form action="/video" method='POST' enctype='multipart/form-data' style="font-style: oblique ; "
+              class="flex mx-auto mt-6 text-black bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded ">
+              {{form.hidden_tag()}}
+              {{form.file()}}
+              {{form.submit()}}
             </form>
           </div>
-          <script>
-
-            function voice() {
-              var recognition = new webkitSpeechRecognition();
-              recognition.lang = "en-GB";
-              recognition.onresult = function (event) {
-                // console.log(event);
-                document.getElementById("message").value = event.results[0][0].transcript;
-
-              }
-              recognition.start();
-
-            }
-          </script>
         </div>
       </div>
       </div>
+      <script>
+
+        function voice() {
+          var recognition = new webkitSpeechRecognition();
+          recognition.lang = "en-GB";
+          recognition.onresult = function (event) {
+            // console.log(event);
+            document.getElementById("message").value = event.results[0][0].transcript;
+
+          }
+          recognition.start();
+
+        }
+      </script>
     </section>
   </header>
 
