@@ -15,7 +15,7 @@ MarkupSafe==2.1.2
 numpy
 pandas
 psycopg2==2.9.5
-
+moviepy
 pycodestyle==2.10.0
 pydub==0.25.1
 python-dateutil==2.8.2
