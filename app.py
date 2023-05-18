@@ -85,9 +85,9 @@ def video():
                   app.config['UPLOAD_FOLDE'], secure_filename("sample.mp4")))
         clip = mp.VideoFileClip("sample.mp4")
         clip.audio.write_audiofile("test.wav")
-        shutil.move(os.path.join("", "test.wav"), os.path.join("speech_recog\\static", "test.wav"))
-        shutil.copy2(os.path.join("", "sample.mp4"), os.path.join("speech_recog\\static", "sample.mp4"))
-        return render_template('index1.html', form=form, result=get_large_audio_transcription("speech_recog\\static\\test.wav"),st=1)
+        shutil.move(os.path.join("", "test.wav"), os.path.join("https://github.com/NIKHILAWATADE16/speech_recog/tree/master/static", "test.wav"))
+        shutil.copy2(os.path.join("", "sample.mp4"), os.path.join("https://github.com/NIKHILAWATADE16/speech_recog/tree/master/static", "sample.mp4"))
+        return render_template('index1.html', form=form, result=get_large_audio_transcription("https://github.com/NIKHILAWATADE16/speech_recog/tree/master/static/test.wav"),st=1)
     return render_template('index.html', form=form, result="")
         
     
